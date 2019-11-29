@@ -1,0 +1,18 @@
+<div *ngIf="loading">
+  <app-loading-screen></app-loading-screen>
+</div>
+
+<div *ngIf="!loading">
+  <div *ngFor="let value of values" class="card">
+    <h2 class="card-title">
+      {{ value.user.firstName + " " + value.user.lastName }}
+    </h2>
+    <p>Appointment Type: {{ value.appointmentType }}</p>
+    <p>Create Date Time: {{ value.createDateTime }}</p>
+    <p>Requested Date Time Offset: {{ value.requestedDateTimeOffset }}</p>
+    <h3>Pet</h3>
+    <p>First Name: {{ value.animal.firstName }}</p>
+    <p>Breed: {{ value.animal.breed }}</p>
+    <p>Species: {{ value.animal.species }}</p>
+  </div>
+</div>
