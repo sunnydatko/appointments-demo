@@ -15,11 +15,7 @@
         </h3>
         <p class="card-text">
           <span class="bold">Requested Time:</span>
-          {{
-            moment(value.requestedDateTimeOffset).format(
-              "MMMM Do YYYY, h:mm:ss a"
-            )
-          }}
+          {{ value.requestedDateTimeOffset | date:'medium'}}          
         </p>
         <h3>Pet</h3>
       <p><span class="bold">First Name:</span> {{ value.animal.firstName }}</p>

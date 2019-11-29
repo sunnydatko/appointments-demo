@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-appointment',
@@ -10,8 +9,6 @@ import * as moment from 'moment';
 export class AppointmentComponent implements OnInit {
   loading = true;
   values: any;
-
-  moment: any = moment;
 
   constructor(private http: HttpClient) {}
 
