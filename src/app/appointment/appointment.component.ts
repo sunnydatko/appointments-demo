@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-appointment',
@@ -9,11 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class AppointmentComponent implements OnInit {
   loading = true;
   values: any;
+
+  moment: any = moment;
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.getValues();
   }
+
+  confirmAppointment(index) {
+    console.log(index);
+
+    if (index !== -1) {
+      this.values.splice(index, 1);
+    }
+  }
+
+  rescheduleAppointment(event, item) {}
 
   getValues() {
     this.http.get('http://localhost:5000/api/appointment').subscribe(
@@ -28,6 +42,4 @@ export class AppointmentComponent implements OnInit {
       }
     );
   }
-
-
 }

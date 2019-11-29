@@ -3,16 +3,37 @@
 </div>
 
 <div *ngIf="!loading">
-  <div *ngFor="let value of values" class="card">
-    <h2 class="card-title">
-      {{ value.user.firstName + " " + value.user.lastName }}
-    </h2>
-    <p>Appointment Type: {{ value.appointmentType }}</p>
-    <p>Create Date Time: {{ value.createDateTime }}</p>
-    <p>Requested Date Time Offset: {{ value.requestedDateTimeOffset }}</p>
-    <h3>Pet</h3>
-    <p>First Name: {{ value.animal.firstName }}</p>
-    <p>Breed: {{ value.animal.breed ? value.animal.breed : 'N/A' }}</p>
-    <p>Species: {{ value.animal.species ? value.animal.species : 'N/A'}}</p>
+  <div *ngFor="let value of values; let i = index">
+    <div class="appointment-card card">
+      <div class="card-body">
+        <h2 class="card-title">
+          {{ value.user.firstName + " " + value.user.lastName }}
+        </h2>
+        <h3 class="card-subtitle text-muted">
+          <span class="bold">Appointment Type:</span>
+          {{ value.appointmentType }}
+        </h3>
+        <p class="card-text">
+          <span class="bold">Requested Time:</span>
+          {{
+            moment(value.requestedDateTimeOffset).format(
+              "MMMM Do YYYY, h:mm:ss a"
+            )
+          }}
+        </p>
+        <h3>Pet</h3>
+      <p><span class="bold">First Name:</span> {{ value.animal.firstName }}</p>
+      <p>
+        <span class="bold">Breed:</span>
+        {{ value.animal.breed ? value.animal.breed : "N/A" }}
+      </p>
+      <p>
+        <span class="bold">Species:</span>
+        {{ value.animal.species ? value.animal.species : "N/A" }}
+      </p>
+        <a href="#" class="card-link" (click)="confirmAppointment(i)">CONFIRM</a>
+        <a href="#" class="card-link">RESCHEDULE</a>
+      </div>
+    </div>
   </div>
 </div>
