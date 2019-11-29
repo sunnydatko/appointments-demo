@@ -12,7 +12,7 @@
     <p>Requested Date Time Offset: {{ value.requestedDateTimeOffset }}</p>
     <h3>Pet</h3>
     <p>First Name: {{ value.animal.firstName }}</p>
-    <p>Breed: {{ value.animal.breed }}</p>
-    <p>Species: {{ value.animal.species }}</p>
+    <p>Breed: {{ value.animal.breed ? value.animal.breed : 'N/A' }}</p>
+    <p>Species: {{ value.animal.species ? value.animal.species : 'N/A'}}</p>
   </div>
 </div>
