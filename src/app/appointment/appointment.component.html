@@ -3,33 +3,47 @@
 </div>
 
 <div *ngIf="!loading">
+  <div *ngIf="!values.length" class="empty-state">
+    <i class="fa fa-hand-peace-o fa-5x" aria-hidden="true"></i>
+    <h2>All caught up.<br />Whats next?</h2>
+  </div>
+
   <div *ngFor="let value of values; let i = index">
     <div class="appointment-card card">
-      <div class="card-body">
-        <h2 class="card-title">
-          {{ value.user.firstName + " " + value.user.lastName }}
-        </h2>
-        <h3 class="card-subtitle text-muted">
-          <span class="bold">Appointment Type:</span>
-          {{ value.appointmentType }}
-        </h3>
-        <p class="card-text">
-          <span class="bold">Requested Time:</span>
-          {{ value.requestedDateTimeOffset | date:'medium'}}          
-        </p>
-        <h3>Pet</h3>
-      <p><span class="bold">First Name:</span> {{ value.animal.firstName }}</p>
-      <p>
-        <span class="bold">Breed:</span>
-        {{ value.animal.breed ? value.animal.breed : "N/A" }}
-      </p>
-      <p>
-        <span class="bold">Species:</span>
-        {{ value.animal.species ? value.animal.species : "N/A" }}
-      </p>
-        <a href="#" class="card-link" (click)="confirmAppointment(i)">CONFIRM</a>
-        <a href="#" class="card-link">RESCHEDULE</a>
-      </div>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{
+              value.user.firstName + " " + value.user.lastName
+            }}</mat-card-title
+          >
+          <mat-card-subtitle>{{ value.appointmentType }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card-text">
+            <span class="bold">Requested Time:</span>
+            {{ value.requestedDateTimeOffset | date: "medium" }}
+          </p>
+          <h3>Pet</h3>
+          <p>
+            <span class="bold">First Name:</span> {{ value.animal.firstName }}
+          </p>
+          <p>
+            <span class="bold">Breed:</span>
+            {{ value.animal.breed ? value.animal.breed : "N/A" }}
+          </p>
+          <p>
+            <span class="bold">Species:</span>
+            {{ value.animal.species ? value.animal.species : "N/A" }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="confirmAppointment(i)">CONFIRM</button>
+          <button mat-button (click)="rescheduleAppointment(i, value)">
+            RESCHEDULE
+          </button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 </div>
