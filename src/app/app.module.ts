@@ -5,6 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 // angular material
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatDialogModule } from "@angular/material/dialog";
 
 import { AppComponent } from "./app.component";
@@ -30,6 +31,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     // angular material
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
     MatDialogModule
   ],
   entryComponents: [

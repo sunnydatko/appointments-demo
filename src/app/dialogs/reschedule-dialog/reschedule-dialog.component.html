@@ -1,7 +1,7 @@
 <h1 mat-dialog-title><i class="fa fa-clock-o" aria-hidden="true"></i> Reschedule Appointment</h1>
 <div mat-dialog-content>
-  <p>Previous Time</p>
-  <p>New Time</p>
+  <p>Previous Time: {{ dialogData.requestedDateTimeOffset | date: "medium" }}</p>
+  <p>New Time:</p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onConfirm()">Confirm</button>

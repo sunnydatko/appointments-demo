@@ -10,10 +10,15 @@ import {
   templateUrl: "reschedule-dialog.component.html"
 })
 export class RescheduleDialogComponent {
+  dialogData: any;
+
   constructor(
     public dialogRef: MatDialogRef<RescheduleDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) {
+    this.dialogData = data.value;
+    console.log(this.dialogData);
+  }
 
   onConfirm(): void {
     this.dialogRef.close();
