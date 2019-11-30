@@ -5,7 +5,7 @@
 <div *ngIf="!loading">
   <div *ngIf="!values.length" class="empty-state">
     <i class="fa fa-hand-peace-o fa-5x" aria-hidden="true"></i>
-    <h2>All caught up.<br />Whats next?</h2>
+    <h3>All caught up.<br />Whats next?</h3>
   </div>
 
   <div *ngFor="let value of values; let i = index">
@@ -19,22 +19,25 @@
       <mat-card-content>
         <p class="card-text">
           <span class="bold">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-               Requested Time:</span>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            Requested Time:</span
+          >
           {{ value.requestedDateTimeOffset | date: "medium" }}
         </p>
-        <h3>Pet Details</h3>
-        <p>
-          <span class="bold">First Name:</span> {{ value.animal.firstName }}
-        </p>
-        <p>
-          <span class="bold">Breed:</span>
-          {{ value.animal.breed ? value.animal.breed : "N/A" }}
-        </p>
-        <p>
-          <span class="bold">Species:</span>
-          {{ value.animal.species ? value.animal.species : "N/A" }}
-        </p>
+        <div class="pet-details">
+          <h3>Pet Details</h3>
+          <p>
+            <span class="bold">First Name:</span> {{ value.animal.firstName }}
+          </p>
+          <p>
+            <span class="bold">Breed:</span>
+            {{ value.animal.breed ? value.animal.breed : "N/A" }}
+          </p>
+          <p>
+            <span class="bold">Species:</span>
+            {{ value.animal.species ? value.animal.species : "N/A" }}
+          </p>
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button (click)="confirmAppointment(i)">

@@ -21,17 +21,12 @@ h3 {
   padding-top: 15px;
 }
 
-
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+.pet-details {
+  margin: 10px 0 0 15px;
+  line-height: .8em;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
+.show {
+  overflow: visible;
+  height: auto;
 }

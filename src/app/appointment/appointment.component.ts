@@ -3,8 +3,9 @@ import { Component, OnInit, Inject } from "@angular/core";
 import {
   MatDialog,
   MatDialogRef,
-  MAT_DIALOG_DATA
-} from "@angular/material/dialog";
+  MAT_DIALOG_DATA,
+  MatSnackBar
+} from "@angular/material";
 
 import { RescheduleDialogComponent } from "../dialogs/reschedule-dialog/reschedule-dialog.component";
 
@@ -14,10 +15,15 @@ import { RescheduleDialogComponent } from "../dialogs/reschedule-dialog/reschedu
   styleUrls: ["./appointment.component.css"]
 })
 export class AppointmentComponent implements OnInit {
+  durationInSeconds = 5;
   loading = true;
   values: any;
 
-  constructor(private http: HttpClient, public dialog: MatDialog) {}
+  constructor(
+    private http: HttpClient,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.getValues();
@@ -27,7 +33,11 @@ export class AppointmentComponent implements OnInit {
     console.log(index);
 
     if (index !== -1) {
-      this.values.splice(index, 1);
+      let removed = this.values.splice(index, 1);
+      let snackbarRef = this._snackBar.open("Appointment Confirmed", "Undo");
+      snackbarRef.onAction().subscribe(() => {
+        this.values.splice(index, 0, ...removed);
+      });
     }
   }
 
@@ -52,8 +62,20 @@ export class AppointmentComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.index !== -1) {
-        this.values.splice(result.index, 1);
+        let removed = this.values.splice(result.index, 1);
+
+        let snackbarRef = this._snackBar.open("Appointment Rescheduled", "Undo");
+        snackbarRef.onAction().subscribe(() => {
+          this.values.splice(result.index, 0, ...removed);
+        });
       }
     });
   }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000
+    });
+  }
 }
+

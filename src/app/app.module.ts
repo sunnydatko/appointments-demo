@@ -10,7 +10,8 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatNativeDateModule,
-  MatInputModule
+  MatInputModule,
+  MatSnackBarModule
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
@@ -40,7 +41,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   entryComponents: [RescheduleDialogComponent],
   exports: [RescheduleDialogComponent],
