@@ -1,9 +1,28 @@
-<h1 mat-dialog-title><i class="fa fa-clock-o" aria-hidden="true"></i> Reschedule Appointment</h1>
+<h1 mat-dialog-title>
+  <i class="fa fa-clock-o" aria-hidden="true"></i> Reschedule Appointment
+</h1>
 <div mat-dialog-content>
-  <p>Previous Time: {{ dialogData.requestedDateTimeOffset | date: "medium" }}</p>
-  <p>New Time:</p>
+  <p>
+    <span class="bold"><i class="fa fa-user" aria-hidden="true"></i> Patient Name: </span>
+    {{ dialogData.user.firstName + " " + dialogData.user.lastName }}
+  </p>
+  <p>
+    <span class="bold"><i class="fa fa-clock-o" aria-hidden="true"></i> Previous Time:</span>
+    {{ dialogData.requestedDateTimeOffset | date: "medium" }}
+  </p>
+  <p>
+    <span class="bold">Select a New Date: </span>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+  </p>
+  <p>
+    <span class="bold">Select a New Time: </span>
+    <input matInput type="time" placeholder="Choose a time" />
+  </p>
 </div>
+
 <div mat-dialog-actions>
   <button mat-button (click)="onConfirm()">Confirm</button>
-  <button mat-button [mat-dialog-close] cdkFocusInitial>Cancel</button>
+  <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
 </div>

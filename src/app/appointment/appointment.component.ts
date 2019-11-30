@@ -47,12 +47,13 @@ export class AppointmentComponent implements OnInit {
 
   rescheduleAppointment(index, value) {
     const dialogRef = this.dialog.open(RescheduleDialogComponent, {
-      width: "500px",
-      data: { value }
+      width: "450px",
+      data: { value, index }
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
+      if (result && result.index !== -1) {
+        this.values.splice(result.index, 1);
+      }
     });
   }
 }

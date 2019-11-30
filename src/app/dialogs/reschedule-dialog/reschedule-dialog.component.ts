@@ -11,16 +11,21 @@ import {
 })
 export class RescheduleDialogComponent {
   dialogData: any;
+  dialogIndex: number;
 
   constructor(
     public dialogRef: MatDialogRef<RescheduleDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.dialogData = data.value;
-    console.log(this.dialogData);
+    this.dialogIndex = data.index;
   }
 
   onConfirm(): void {
+    this.dialogRef.close({ event: "close", index: this.dialogIndex });
+  }
+
+  onCancel(): void {
     this.dialogRef.close();
   }
 }

@@ -18,10 +18,12 @@
       </mat-card-header>
       <mat-card-content>
         <p class="card-text">
-          <span class="bold">Requested Time:</span>
+          <span class="bold">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+               Requested Time:</span>
           {{ value.requestedDateTimeOffset | date: "medium" }}
         </p>
-        <h3>Pet</h3>
+        <h3>Pet Details</h3>
         <p>
           <span class="bold">First Name:</span> {{ value.animal.firstName }}
         </p>
