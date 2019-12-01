@@ -10,14 +10,14 @@ import {
 import { RescheduleDialogComponent } from "../dialogs/reschedule-dialog/reschedule-dialog.component";
 
 @Component({
-  selector: "app-appointment",
-  templateUrl: "./appointment.component.html",
-  styleUrls: ["./appointment.component.css"]
+  selector: "app-appointments",
+  templateUrl: "./appointments.component.html",
+  styleUrls: ["./appointments.component.css"]
 })
 export class AppointmentComponent implements OnInit {
   durationInSeconds = 5;
   loading = true;
-  values: any;
+  values: Appointment[];
 
   constructor(
     private http: HttpClient,
@@ -44,9 +44,9 @@ export class AppointmentComponent implements OnInit {
   getValues() {
     this.http.get("http://localhost:5000/api/appointment").subscribe(
       response => {
-        this.values = JSON.stringify(response);
-        this.values = JSON.parse(this.values);
-        this.values = JSON.parse(this.values.stringResult);
+        let result = JSON.stringify(response);
+        let parsedResult = JSON.parse(result);
+        this.values = JSON.parse(parsedResult.stringResult);
         this.loading = false;
       },
       error => {
@@ -64,7 +64,10 @@ export class AppointmentComponent implements OnInit {
       if (result && result.index !== -1) {
         let removed = this.values.splice(result.index, 1);
 
-        let snackbarRef = this._snackBar.open("Appointment Rescheduled", "Undo");
+        let snackbarRef = this._snackBar.open(
+          "Appointment Rescheduled",
+          "Undo"
+        );
         snackbarRef.onAction().subscribe(() => {
           this.values.splice(result.index, 0, ...removed);
         });
@@ -79,3 +82,24 @@ export class AppointmentComponent implements OnInit {
   }
 }
 
+interface Appointment {
+  appointmentType: string;
+  appointmentId: string;
+  createDateTime: string;
+  requestedDateTimeOffset: string;
+  animal: Animal;
+  user: User;
+}
+
+interface Animal {
+  animalId: string;
+  firstName: string;
+  breed: string;
+  species: string;
+}
+
+interface User {
+  firstName: string;
+  lastName: string;
+  userId: string;
+}
