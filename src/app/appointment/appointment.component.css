@@ -21,12 +21,6 @@ h3 {
   padding-top: 15px;
 }
 
-.pet-details {
-  margin: 10px 0 0 15px;
-  line-height: .8em;
-}
-
-.show {
-  overflow: visible;
-  height: auto;
+.card-content {
+  margin-left: 20px;
 }

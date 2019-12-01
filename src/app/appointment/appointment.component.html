@@ -17,25 +17,26 @@
         <mat-card-subtitle>{{ value.appointmentType }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p class="card-text">
-          <span class="bold">
-            <i class="fa fa-clock-o" aria-hidden="true"></i>
-            Requested Time:</span
-          >
-          {{ value.requestedDateTimeOffset | date: "medium" }}
-        </p>
-        <div class="pet-details">
-          <h3>Pet Details</h3>
-          <p>
-            <span class="bold">First Name:</span> {{ value.animal.firstName }}
+        <div class="card-content">
+          <p class="card-text">
+            <span class="bold">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              Requested Time:</span
+            >
+            {{ value.requestedDateTimeOffset | date: "medium" }}
           </p>
-          <p>
-            <span class="bold">Breed:</span>
+          <p class="card-text">
+            <span class="bold">
+              <i class="fa fa-paw" aria-hidden="true"></i> Pet:
+            </span>
+
+            {{ value.animal.firstName }},
             {{ value.animal.breed ? value.animal.breed : "N/A" }}
-          </p>
-          <p>
-            <span class="bold">Species:</span>
-            {{ value.animal.species ? value.animal.species : "N/A" }}
+            {{
+              value.animal.species
+                ? "(" + value.animal.species + ")"
+                : "(" + "N/A" + ")"
+            }}
           </p>
         </div>
       </mat-card-content>

@@ -4,3 +4,8 @@ h1 {
     padding-top: 5px;
     font-size: 2em;
 }
+
+.wrapper {
+    width: 70%;
+    margin: 0px auto;
+}
