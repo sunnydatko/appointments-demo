@@ -43,8 +43,7 @@ export class AppointmentsComponent implements OnInit {
     this.http.get("http://localhost:5000/api/appointment").subscribe(
       response => {
         let result = JSON.stringify(response);
-        let parsedResult = JSON.parse(result);
-        this.values = JSON.parse(parsedResult.stringResult);
+        this.values = JSON.parse(result);
         this.loading = false;
       },
       error => {
