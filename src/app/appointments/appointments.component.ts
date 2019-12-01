@@ -1,13 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit, Inject } from "@angular/core";
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-  MatSnackBar
-} from "@angular/material";
+import { MatDialog, MatSnackBar } from "@angular/material";
 
 import { RescheduleDialogComponent } from "../dialogs/reschedule-dialog/reschedule-dialog.component";
+import { Appointment } from "../interfaces/appointment";
 
 @Component({
   selector: "app-appointments",
@@ -80,26 +76,4 @@ export class AppointmentsComponent implements OnInit {
       duration: 2000
     });
   }
-}
-
-interface Appointment {
-  appointmentType: string;
-  appointmentId: string;
-  createDateTime: string;
-  requestedDateTimeOffset: string;
-  animal: Animal;
-  user: User;
-}
-
-interface Animal {
-  animalId: string;
-  firstName: string;
-  breed: string;
-  species: string;
-}
-
-interface User {
-  firstName: string;
-  lastName: string;
-  userId: string;
 }
