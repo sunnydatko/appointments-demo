@@ -14,7 +14,7 @@ import { RescheduleDialogComponent } from "../dialogs/reschedule-dialog/reschedu
   templateUrl: "./appointments.component.html",
   styleUrls: ["./appointments.component.css"]
 })
-export class AppointmentComponent implements OnInit {
+export class AppointmentsComponent implements OnInit {
   durationInSeconds = 5;
   loading = true;
   values: Appointment[];

@@ -16,7 +16,7 @@ import {
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
-import { AppointmentComponent } from "./appointment/appointment.component";
+import { AppointmentsComponent } from "./appointments/appointments.component";
 import { LoadingScreenComponent } from "./loading-screen/loading-screen.component";
 import { RescheduleDialogComponent } from "./dialogs/reschedule-dialog/reschedule-dialog.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -24,7 +24,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
-    AppointmentComponent,
+    AppointmentsComponent,
     LoadingScreenComponent,
 
     // dialogs
