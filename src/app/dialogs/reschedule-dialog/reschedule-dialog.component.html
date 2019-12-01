@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-  <i class="fa fa-clock-o" aria-hidden="true"></i> Reschedule Appointment
+  Reschedule Appointment
 </h1>
 <div mat-dialog-content>
   <p>
@@ -9,7 +9,9 @@
     {{ dialogData.user.firstName + " " + dialogData.user.lastName }}
   </p>
   <p>
-    <span class="bold"> Requested Time: </span>
+    <span class="bold">
+      <i class="fa fa-clock-o" aria-hidden="true"></i> Requested Time:
+    </span>
     {{ dialogData.requestedDateTimeOffset | date: "medium" }}
   </p>
   <form [formGroup]="scheduleForm" novalidate>
