@@ -30,7 +30,9 @@ export class AppointmentsComponent implements OnInit {
 
     if (index !== -1) {
       let removed = this.values.splice(index, 1);
-      let snackbarRef = this._snackBar.open("Appointment Confirmed", "Undo");
+      let snackbarRef = this._snackBar.open("Appointment Confirmed", "Undo", {
+        duration: 1500
+      });
       snackbarRef.onAction().subscribe(() => {
         this.values.splice(index, 0, ...removed);
       });
@@ -59,10 +61,12 @@ export class AppointmentsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.index !== -1) {
         let removed = this.values.splice(result.index, 1);
-
         let snackbarRef = this._snackBar.open(
           "Appointment Rescheduled",
-          "Undo"
+          "Undo",
+          {
+            duration: 1500
+          }
         );
         snackbarRef.onAction().subscribe(() => {
           this.values.splice(result.index, 0, ...removed);
